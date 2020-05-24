@@ -72,7 +72,7 @@ class validator{
     private function exists(string $field):bool{
         return isset($this->data[$field]) && !empty($this->data[$field]);
     }
-    private function sanitizeInput(string $value):string{
+    private function sanitizeInput($value):string{
         return filter_var($value, FILTER_SANITIZE_STRING);
     }
     private function check(rule $rule, string $fieldName):bool{
