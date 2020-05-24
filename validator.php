@@ -3,21 +3,21 @@ namespace rules;
 require_once 'rules/rule.php';
 class validator{
     /*Properties*/
-    public $failed = 0;
-    private $dataIndex = 'validatorData';
-    private $errors = [];
-    private $availableRules = [
+    public bool $failed = false;
+    private string $dataIndex = 'validatorData';
+    private array $errors = [];
+    private array $availableRules = [
         'required','digits', 'email', 'max', 'min',
         'letters', 'lettersAndDigits', 'username',
         'date', 'letter', 'link'
     ];
-    private $data = [];
+    private array $data;
     /*End properties*/
     /*Public methods*/
     public function __construct(array $data){
         $this->data = $data;
     }
-    public function validate(array $validationArr){
+    public function validate(array $validationArr):void{
         foreach($validationArr as $field => $rules):
             if(is_string($rules)):
                 //if it's a string then put it as
@@ -48,50 +48,49 @@ class validator{
             endif;
         endforeach;
     }
-    public function getErrors(){
+    public function getErrors():array{
         return $this->errors;
     }
-    public function getError($field){
+    public function getError(string $field){
         return $this->errors[$field] ?? null;
     }
-    public function hasError($field){
+    public function hasError(string $field):bool{
         return isset($this->errors[$field]);
     }
-    public function dataValid(){
+    public function dataValid():bool{
         return empty($this->errors);
     }
-    public function validatorData(){
+    public function validatorData():array{
         return ['errors' => $this->errors, 'oldInputs' => $this->data];
     }
-    public function dataToSession($index = null){
+    public function dataToSession(?string $index = null):array{
         $in = $index ?? $this->dataIndex;
         return $_SESSION[$in] = $this->validatorData();
     }
     /*End public methods*/
     /*private methods*/
-    private function exists($field){
+    private function exists(string $field):bool{
         return isset($this->data[$field]) && !empty($this->data[$field]);
     }
-    private function sanitizeInput($value){
+    private function sanitizeInput(string $value):string{
         return filter_var($value, FILTER_SANITIZE_STRING);
     }
-    private function check(rule $rule, $fieldName){
+    private function check(rule $rule, string $fieldName):bool{
         $value = $this->sanitizeInput($this->data[$fieldName] ?? null);
         return $rule->check($value);
     }
-    private function addError($field, $errMsg, $errType){
+    private function addError(string $field, string $errMsg, string $errType):array{
         return $this->errors[$field] = ["msg" => $errMsg, "type" => $errType];
     }
-    private function ruleAsArr($ruleWithArgument){
+    private function ruleAsArr(string $ruleWithArgument):array{
         $ruleWithArgument = trim($ruleWithArgument);
-        $ruleArr = explode(':', $ruleWithArgument);
-        return $ruleArr;
+        return explode(':', $ruleWithArgument);
     }
-    private function requireRuleClass($className){
+    private function requireRuleClass(string $className):void{
         require_once 'rules/'.$className.'.php';
     }
-    private function fail(){
-        return $this->failed = 1;
+    private function fail():void{
+        $this->failed = true;
     }
     /*End private methods*/
 }

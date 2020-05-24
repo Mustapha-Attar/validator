@@ -2,6 +2,6 @@
 namespace rules;
 interface rule{
     function __construct($argument);
-    function check($value);
-    function msg();
+    function check(string $value):bool;
+    function msg():string;
 }

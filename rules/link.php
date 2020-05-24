@@ -5,10 +5,10 @@ class link implements rule{
     public function __construct($argument){
         return;
     }
-    public function check($value){
+    public function check(string $value):bool{
         return filter_var($value, FILTER_VALIDATE_URL) === $value;
     }
-    public function msg(){
+    public function msg():string{
         return 'is invalid';
     }
 }
