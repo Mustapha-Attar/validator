@@ -5,10 +5,10 @@ class required implements rule{
     public function __construct($argument){
         return;
     }
-    public function check($value){
+    public function check($value):bool{
         return !empty($value);
     }
-    public function msg(){
+    public function msg():string{
         return 'is required';
     }
 }
