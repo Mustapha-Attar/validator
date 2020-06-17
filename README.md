@@ -31,6 +31,7 @@ else://data is valid
 endif;
 ```
 ### Available rules
+Their files can be found at: [available rules](https://github.com/Mustapha-Attar/validator/tree/master/rules)
 * required
 * digits
 * email
