@@ -102,7 +102,7 @@ $form->setErrorClass('has-error');
   <div class="input-holder <?php echo $form->errClass('link'); ?>">
     <label for="link" class="label">Profile link:</label>
       <input id="link" type="text" name="link" class="input" value="<?php echo $form->old('link'); ?>" />
-      <div class="errMsg"><?php echo $form->getError('link'); ?></div>
+      <div class="errMsg"><?php echo $form->getError('link', 'Profile link'); ?></div>
   </div>
 </form>
 ```
