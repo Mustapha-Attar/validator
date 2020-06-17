@@ -28,7 +28,7 @@ class form{
         $err = empty($err)? '': $l.' '.$err;
         return $err;
     }
-    public function errType(string $field)?string{
+    public function errType(string $field):?string{
         return $this->errors[$field]['type'] ?? null;
     }
     public function old(string $field):string{
