@@ -1,11 +1,11 @@
 <?php
 class form{
     /*properties*/
-    private $errClass = 'has-error';
-    private $data = [];
-    private $errors = [];
-    private $oldInputs = [];
-    private $dataIndex = 'validatorData';
+    private string $errClass = 'has-error';
+    private array $data = [];
+    private array $errors = [];
+    private array $oldInputs = [];
+    private string $dataIndex = 'validatorData';
     /*end properties*/
     /*public methods*/
     public function __construct(array $data = null){
@@ -18,38 +18,40 @@ class form{
         $this->oldInputs = $this->data['oldInputs'];
         $this->errors = $this->data['errors'];
     }
-    public function hasError($field){
+    public function hasError(string $field):bool{
         return isset($this->errors[$field]);
     }
-    public function getError($field, $label = null){
+    public function getError(string $field, ?string $label = null):string{
         $err = $this->errors[$field]['msg'] ?? '';
         $l = $label ?? $field;
         $l = ucfirst(strtolower($l));
         $err = empty($err)? '': $l.' '.$err;
         return $err;
     }
-    public function errType($field){
+    public function errType(string $field)?string{
         return $this->errors[$field]['type'] ?? null;
     }
-    public function old($field){
+    public function old(string $field):string{
         $val = $this->oldInputs[$field] ?? '';
         return htmlspecialchars($val);
     }
-    public function errClass($field){
+    public function errClass(string $field):string{
         return $this->hasError($field)? $this->errClass: '';
     }
-    public function success(){
-        return sizeof($this->errors);
+    public function success():bool{
+        return (bool)sizeof($this->errors);
     }
-    public function customErrMsg($field, $type, $msg){
+    public function customErrMsg($field, $type, $msg):bool{
         if(isset($this->errors[$field]['type']) && $this->errors[$field]['type'] === $type):
             $this->errors[$field]['msg'] = $msg;
             return true;
         endif;
         return false;
     }
-    public function setErrorClass($errClass){
-        return $this->errClass = $errClass;
+    public function setErrorClass(string $errClass):string{
+        $oldClass = $this->errClass;
+        $this->errClass = $errClass;
+        return $oldClass;
     }
     /*end public methods*/
 }
