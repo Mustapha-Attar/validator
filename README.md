@@ -2,7 +2,7 @@
 Validator (with rules classes) &amp; form class that help you valdating data in server side using PHP OOP
 ## Installation
 ```bash
-git pull https://github.com/Mustapha-Attar/validator.git
+git clone https://github.com/Mustapha-Attar/validator.git
 ```
 ## Usage
 ### Validation process
