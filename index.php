@@ -58,7 +58,7 @@ $form->customErrMsg('gender', 'letter', 'is invalid');
                 <label for="dob" class="label">
                     Date of birth:
                 </label>
-                <input id="dob" type="date" name="dob" class="input" value="<?php echo $form->old('link'); ?>" />
+                <input id="dob" type="date" name="dob" class="input" value="<?php echo $form->old('dob'); ?>" />
                 <div class="errMsg">
                     <?php echo $form->getError('dob', 'Date of birth'); ?>
                 </div>
