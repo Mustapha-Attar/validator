@@ -4,6 +4,21 @@ Validator (with rules classes) &amp; form class that help you valdating data in 
 ```bash
 git clone https://github.com/Mustapha-Attar/validator.git
 ```
+## Available rules
+Their files can be found at: [available rules](https://github.com/Mustapha-Attar/validator/tree/master/rules)
+* required
+* digits
+* email
+* max
+* min
+* letters
+* lettersAndDigits
+* username
+* date
+* letter
+* link
+* equal
+* match
 ## Usage
 ### Validation process
 ```php
@@ -30,39 +45,8 @@ else://data is valid
     echo 'passed';
 endif;
 ```
-### Available rules
-Their files can be found at: [available rules](https://github.com/Mustapha-Attar/validator/tree/master/rules)
-* required
-* digits
-* email
-* max
-* min
-* letters
-* lettersAndDigits
-* username
-* date
-* letter
-* link
-* equal
-* match
-
 ### Error display using 'Form' class
-```php
-<?php
-session_start();
-require_once 'form.php';
-$form = new form();
-?>
-```
-```html
-<form action="/reg.php" method="POST">
-  <div class="input-holder <?php echo $form->errClass('link'); ?>">
-    <label for="link" class="label">Profile link:</label>
-      <input id="link" type="text" name="link" class="input" value="<?php echo $form->old('link'); ?>" />
-      <div class="errMsg"><?php echo $form->getError('link'); ?></div>
-  </div>
-</form>
-```
+<div class="errMsg"><?php echo $form->getError('link'); ?></div>
 #### Customising error messages
 ```php
 <?php
@@ -100,4 +84,23 @@ So now when using:
 In case you have a password input you can just skip this step
 ```html
 <input id="password" type="password" name="password" class="input" value="" />
+```
+### Complete example
+```php
+<?php
+session_start();
+require_once 'form.php';
+$form = new form();
+$form->customErrMsg('link', 'link', 'is invalid link');
+$form->setErrorClass('has-error');
+?>
+```
+```html
+<form action="/reg.php" method="POST">
+  <div class="input-holder <?php echo $form->errClass('link'); ?>">
+    <label for="link" class="label">Profile link:</label>
+      <input id="link" type="text" name="link" class="input" value="<?php echo $form->old('link'); ?>" />
+      <div class="errMsg"><?php echo $form->getError('link'); ?></div>
+  </div>
+</form>
 ```
