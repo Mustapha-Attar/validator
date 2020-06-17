@@ -46,7 +46,9 @@ else://data is valid
 endif;
 ```
 ### Error display using 'Form' class
+```html
 <div class="errMsg"><?php echo $form->getError('link'); ?></div>
+```
 #### Customising error messages
 ```php
 <?php
