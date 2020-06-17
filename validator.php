@@ -51,7 +51,7 @@ class validator{
     public function getErrors():array{
         return $this->errors;
     }
-    public function getError(string $field):?string{
+    public function getError(string $field):?array{
         return $this->errors[$field] ?? null;
     }
     public function hasError(string $field):bool{
