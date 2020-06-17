@@ -1,6 +1,6 @@
 <?php
-namespace rules;
 require_once 'rules/rule.php';
+use rules\rule;
 class validator{
     /*Properties*/
     public bool $failed = false;

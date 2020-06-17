@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once 'validator.php';
-use rules\validator;
 if(isset($_POST['reg'])):
     $validator = new validator($_POST);
     $validator->validate([
