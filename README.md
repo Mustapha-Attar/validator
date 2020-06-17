@@ -5,7 +5,7 @@ Validator (with rules classes) &amp; form classes that help you valdating data i
 ```php
 <?php
 session_start();
-$validator = new validator($data);
+$validator = new validator($_POST);
 $validator->validate([
   "email" => ['required', 'email', 'max: 50'],
   "phoneNumber" => ['required', 'digits', 'max: 11', 'min: 6'],
