@@ -12,7 +12,7 @@ $form->customErrMsg('gender', 'letter', 'is invalid');
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/styling/style.css">
-    <title>Document</title>
+    <title>Validator</title>
 </head>
 <body>
     <div id="form-holder">
