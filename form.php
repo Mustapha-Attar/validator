@@ -41,7 +41,7 @@ class form{
     public function success():bool{
         return (bool)sizeof($this->errors);
     }
-    public function customErrMsg($field, $type, $msg):bool{
+    public function customErrMsg(string $field, string $type, string $msg):bool{
         if(isset($this->errors[$field]['type']) && $this->errors[$field]['type'] === $type):
             $this->errors[$field]['msg'] = $msg;
             return true;
