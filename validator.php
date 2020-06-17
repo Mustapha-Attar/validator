@@ -9,7 +9,7 @@ class validator{
     private array $availableRules = [
         'required','digits', 'email', 'max', 'min',
         'letters', 'lettersAndDigits', 'username',
-        'date', 'letter', 'link'
+        'date', 'letter', 'link', 'equal', 'match'
     ];
     private array $data;
     /*End properties*/
