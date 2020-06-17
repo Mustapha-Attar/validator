@@ -41,7 +41,7 @@ endif;
 * equal
 * match
 
-### Error display using form class
+### Error display using 'Form' class
 ```php
 <?php
 session_start();
